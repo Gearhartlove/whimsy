@@ -20,6 +20,13 @@ defmodule WhimsyWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/app", WhimsyWeb do
+    pipe_through :browser
+
+    get "/", AppController, :index
+    post "/generate_encounter", AppController, :generate_encounter
+  end
+
   # HTMX routes - return HTML fragments
   scope "/htmx", WhimsyWeb do
     pipe_through :browser
