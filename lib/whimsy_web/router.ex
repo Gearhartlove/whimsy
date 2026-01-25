@@ -20,6 +20,14 @@ defmodule WhimsyWeb.Router do
     get "/", PageController, :home
   end
 
+  # HTMX routes - return HTML fragments
+  scope "/htmx", WhimsyWeb do
+    pipe_through :browser
+
+    get "/greeting", HtmxController, :greeting
+    get "/roll", HtmxController, :roll_dice
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", WhimsyWeb do
   #   pipe_through :api

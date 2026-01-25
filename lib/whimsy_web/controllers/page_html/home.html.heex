@@ -198,5 +198,81 @@
         </div>
       </div>
     </div>
+
+    <%!-- HTMX Demo Section --%>
+    <div class="mt-16 p-6 rounded-box bg-base-200">
+      <h2 class="text-xl font-bold mb-4">HTMX Demo</h2>
+      <p class="text-sm text-base-content/70 mb-6">
+        Interactive examples of HTMX making requests to the server and rendering the returned HTML.
+      </p>
+
+      <div class="space-y-6">
+        <%!-- Greeting Demo --%>
+        <div class="p-4 rounded-box bg-base-100">
+          <h3 class="font-semibold mb-2">Random Greeting</h3>
+          <p class="text-sm text-base-content/70 mb-3">
+            Click the button to fetch a random greeting from the server.
+          </p>
+          <div class="flex items-center gap-4">
+            <button
+              hx-get="/htmx/greeting"
+              hx-target="#greeting-result"
+              hx-swap="innerHTML"
+              class="btn btn-primary btn-sm"
+            >
+              Get Greeting
+            </button>
+            <div id="greeting-result" class="min-h-[28px]">
+              <p class="text-base-content/50 italic">Click to get a greeting...</p>
+            </div>
+          </div>
+        </div>
+
+        <%!-- Dice Roll Demo --%>
+        <div class="p-4 rounded-box bg-base-100">
+          <h3 class="font-semibold mb-2">Dice Roller</h3>
+          <p class="text-sm text-base-content/70 mb-3">
+            Roll different dice - the server generates the random result.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <button
+              hx-get="/htmx/roll?sides=4"
+              hx-target="#dice-result"
+              hx-swap="innerHTML"
+              class="btn btn-secondary btn-sm"
+            >
+              Roll d4
+            </button>
+            <button
+              hx-get="/htmx/roll?sides=6"
+              hx-target="#dice-result"
+              hx-swap="innerHTML"
+              class="btn btn-secondary btn-sm"
+            >
+              Roll d6
+            </button>
+            <button
+              hx-get="/htmx/roll?sides=20"
+              hx-target="#dice-result"
+              hx-swap="innerHTML"
+              class="btn btn-accent btn-sm"
+            >
+              Roll d20
+            </button>
+            <button
+              hx-get="/htmx/roll?sides=100"
+              hx-target="#dice-result"
+              hx-swap="innerHTML"
+              class="btn btn-warning btn-sm"
+            >
+              Roll d100
+            </button>
+          </div>
+          <div id="dice-result" class="mt-4 min-h-[48px]">
+            <p class="text-base-content/50 italic">Click a button to roll...</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

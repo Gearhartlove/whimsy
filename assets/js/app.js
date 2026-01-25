@@ -24,8 +24,17 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/whimsy"
 import topbar from "../vendor/topbar"
+import htmx from "../vendor/htmx.min.js"
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+
+// Configure HTMX to include CSRF token in all requests
+document.body.addEventListener('htmx:configRequest', (event) => {
+  event.detail.headers['x-csrf-token'] = csrfToken
+})
+
+// Expose htmx on window for debugging
+window.htmx = htmx
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken},
