@@ -3,7 +3,7 @@
 ## Your Task
 1. Find the highest-priority task and implement it.
 - To find tasks, search linear for tasks with the label 'ralph'
-2. Read `@scripts/ralph/progress.txt`
+2. Read `@ralph/progress.txt`
    (check Codebase Patterns first)
 3. Check you're on the correct branch
 - If not on the correct branch, create a branch for the current task
@@ -12,16 +12,15 @@
 6. Add tests to ensure changes work
 7. Run typecheck and tests
 - `mix compile --warnings-as-errors`
-- `cd assets && npm run typecheck`
-8. Update `@scripts/ralph/RALPH_AGENTS.md` files with learnings
+8. Update `@ralph/RALPH_AGENTS.md` files with learnings
 9. Commit: `feat: [ID] - [Title]`
-10. Append learnings to `@scripts/ralph/progress.txt`
+10. Append learnings to `@ralph/progress.txt`
 11. Update the linear task with context related to your changes
 12. Create a PR: RALPH: `[ID] - [Title]`
 
 ## Progress Format
 
-APPEND to `@scripts/ralph/progress.txt`:
+APPEND to `@ralph/progress.txt`:
 
 ## [Date] - [Story ID]
 - What was implemented
@@ -34,7 +33,7 @@ APPEND to `@scripts/ralph/progress.txt`:
 ## Codebase Patterns
 
 Add reusable patterns to the TOP 
-of `@scripts/ralph/progress.txt`:
+of `@ralph/progress.txt`:
 
 ## Stop Condition
 
