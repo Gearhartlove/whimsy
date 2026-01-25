@@ -1,47 +1,32 @@
-<p>
+<h1 class="text-2xl mb-10">
   Whimsy
-</p>
+</h1>
 
-<!-- This is where the user can describe the encounter they want.-->
-<!--
-<form hx-post="/app/generate_encounter" hx-target="this">
-  <div>
-    <label>A brief description of your encounter</label>
-  </div>
-  <div>
-    <input class="bg-sky-700" />
-  </div>
-  <div>
-    <button type="submit" class="bg-red-800">
-      Generate
-    </button>
-  </div>
+<form hx-post="/app/generate_encounter">
+  <label
+    for="description"
+    class="block mb-2.5 text-sm font-medium text-heading"
+  >
+    Your encounter description
+  </label>
+  <textarea
+    id="description"
+    rows="1"
+    placeholder="start typing ..."
+    class="bg-neutral-necondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-band block w-full p-3.5 shadow-xs placeholder:text-body mb-1"
+  ></textarea>
+  <button
+    hx-post="/app/generate_encounter"
+    hx-indicator="next img"
+    hx-swap="outerHTML"
+    hx-target="closest form"
+    class="text-white bg-red-500 box-border border border-transparent hover:bg-red-800 focus:ring-2 font-medium rounded-lg text-sm px-4 py-2.5 mb-1"
+  >
+    Generate Encounter
+  </button>
+  <img
+    class="htmx-indicator"
+    src={~p"/images/loaders/tail-spin.svg"}
+    alt="Loading..."
+  />
 </form>
--->
-
-<button hx-post="/app/generate_encounter">
-  Click Me! <img class="htmx-indicator" src={~p"/images/loaders/puff.svg"} alt="Loading..." />
-</button>
-
-<div class="grid grid-cols-5 gap-4">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-</div>
