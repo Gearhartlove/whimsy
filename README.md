@@ -1,19 +1,14 @@
 # Whimsy
 
-To start your Phoenix server:
+AI Powered GM tools
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Goals
+Create an encounter creator to help Pathfinder `GMs` instantiate combat.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Constraints
+- Only use _small_ subset of monsters
+- Support simple _small_ room layout with one layer
+- Use HTMX even when it does not make sense
+  - _note: point is to see the interaction and to use the beam WITH another technology_
+- ... There is maybe more to add here ...
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
-# whimsy
