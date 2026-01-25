@@ -35,3 +35,7 @@ whimsy-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/ralph/RALPH_AGENTS.md
+/ralph/progress.txt
+
+
