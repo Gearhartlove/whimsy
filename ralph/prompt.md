@@ -12,7 +12,6 @@
 6. Add tests to ensure changes work
 7. Run typecheck and tests
 - `mix compile --warnings-as-errors`
-- `cd assets && npm run typecheck`
 8. Update `@ralph/RALPH_AGENTS.md` files with learnings
 9. Commit: `feat: [ID] - [Title]`
 10. Append learnings to `@ralph/progress.txt`
