@@ -5,13 +5,14 @@ defmodule WhimsyWeb.HtmxController do
   use WhimsyWeb, :controller
 
   def greeting(conn, _params) do
-    greeting = Enum.random([
-      "Hello, adventurer!",
-      "Greetings, brave soul!",
-      "Welcome, weary traveler!",
-      "Hail, noble hero!",
-      "Well met, wanderer!"
-    ])
+    greeting =
+      Enum.random([
+        "Hello, adventurer!",
+        "Greetings, brave soul!",
+        "Welcome, weary traveler!",
+        "Hail, noble hero!",
+        "Well met, wanderer!"
+      ])
 
     conn
     |> put_root_layout(false)
