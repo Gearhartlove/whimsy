@@ -5,7 +5,8 @@ defmodule Whimsy.Schemas.Creature do
     field :name, :string
     field :embedded_phrase, :string
     field :data, :map
+    field :embedding, Pgvector.Ecto.Vector
 
-    # TODO: add a pg vector style vector entry to this 
+    timestamps()
   end
 end

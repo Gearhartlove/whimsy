@@ -11,6 +11,8 @@ config :whimsy,
   ecto_repos: [Whimsy.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :whimsy, Whimsy.Repo, types: Whimsy.PostgrexTypes
+
 # Configure the endpoint
 config :whimsy, WhimsyWeb.Endpoint,
   url: [host: "localhost"],
