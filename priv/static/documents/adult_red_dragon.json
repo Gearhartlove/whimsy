@@ -1,0 +1,218 @@
+{
+  "name": "Adult Red Dragon",
+  "source": "B1",
+  "page": 112,
+  "level": 14,
+  "traits": ["ce", "huge", "dragon", "fire"],
+  "perception": {
+    "std": 26
+  },
+  "senses": [
+    {
+      "name": "darkvision"
+    },
+    {
+      "type": "imprecise",
+      "name": "scent",
+      "range": 60
+    },
+    {
+      "name": "smoke vision"
+    }
+  ],
+  "languages": {
+    "languages": ["common", "draconic", "dwarven", "orcish"]
+  },
+  "skills": {
+    "acrobatics": {
+      "std": 23
+    },
+    "arcana": {
+      "std": 25
+    },
+    "athletics": {
+      "std": 29
+    },
+    "deception": {
+      "std": 25
+    },
+    "diplomacy": {
+      "std": 25
+    },
+    "intimidation": {
+      "std": 27
+    },
+    "stealth": {
+      "std": 23
+    }
+  },
+  "abilityMods": {
+    "str": 7,
+    "dex": 3,
+    "con": 6,
+    "int": 3,
+    "wis": 4,
+    "cha": 5
+  },
+  "speed": {
+    "walk": 50,
+    "fly": 150
+  },
+  "attacks": [
+    {
+      "range": "Melee",
+      "name": "jaws",
+      "attack": 29,
+      "traits": ["fire", "magical", "reach <15 feet>"],
+      "damage": "{@damage 3d12+15} piercing plus {@damage 2d6} fire",
+      "types": ["fire", "piercing"]
+    },
+    {
+      "range": "Melee",
+      "name": "claw",
+      "attack": 29,
+      "traits": ["agile", "magical", "reach <10 feet>"],
+      "damage": "{@damage 3d10+15} slashing",
+      "types": ["slashing"]
+    },
+    {
+      "range": "Melee",
+      "name": "tail",
+      "attack": 27,
+      "traits": ["magical", "reach <20 feet>"],
+      "damage": "{@damage 3d12+13} slashing",
+      "types": ["slashing"]
+    },
+    {
+      "range": "Melee",
+      "name": "wing",
+      "attack": 27,
+      "traits": ["agile", "magical", "reach <15 feet>"],
+      "damage": "{@damage 2d10+13} slashing",
+      "types": ["slashing"]
+    }
+  ],
+  "spellcasting": [
+    {
+      "type": "Innate",
+      "tradition": "arcane",
+      "DC": 35,
+      "entry": {
+        "0": {
+          "level": 6,
+          "spells": [
+            {
+              "name": "detect magic"
+            },
+            {
+              "name": "read aura"
+            }
+          ]
+        },
+        "4": {
+          "spells": [
+            {
+              "name": "suggestion"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "abilities": {
+    "top": [
+      {
+        "entries": [
+          "Smoke doesn't impair a red dragon's vision; it ignores the {@condition concealed} condition from smoke."
+        ],
+        "name": "Smoke Vision"
+      }
+    ],
+    "mid": [
+      {
+        "traits": ["arcane", "aura", "evocation", "fire"],
+        "entries": [
+          "5 feet, {@damage 3d6} fire damage ({@dc 30} basic Reflex)"
+        ],
+        "name": "Dragon Heat"
+      },
+      {
+        "traits": ["aura", "emotion", "fear", "mental"],
+        "entries": ["90 feet, {@dc 33}"],
+        "name": "Frightful Presence",
+        "generic": {
+          "tag": "ability"
+        }
+      },
+      {
+        "activity": {
+          "number": 1,
+          "unit": "reaction"
+        },
+        "entries": ["Jaws only."],
+        "name": "Attack of Opportunity",
+        "generic": {
+          "tag": "ability"
+        }
+      }
+    ],
+    "bot": [
+      {
+        "activity": {
+          "number": 2,
+          "unit": "action"
+        },
+        "traits": ["arcane", "evocation", "fire"],
+        "entries": [
+          "The dragon breathes a blast of flame that deals {@damage 15d6} fire damage in a 50-foot cone ({@dc 36} basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+        ],
+        "name": "Breath Weapon"
+      },
+      {
+        "activity": {
+          "number": 2,
+          "unit": "action"
+        },
+        "entries": [
+          "The dragon makes two claw {@action Strike||Strikes} and one wing {@action Strike} in any order."
+        ],
+        "name": "Draconic Frenzy"
+      },
+      {
+        "entries": [
+          "The dragon recharges its Breath Weapon whenever it scores a critical hit with a {@action Strike}."
+        ],
+        "name": "Draconic Momentum"
+      }
+    ]
+  },
+  "defenses": {
+    "ac": {
+      "std": 37
+    },
+    "savingThrows": {
+      "fort": {
+        "std": 28
+      },
+      "ref": {
+        "std": 25
+      },
+      "will": {
+        "std": 26
+      },
+      "abilities": ["+1 status to all saves vs. magic"]
+    },
+    "hp": [
+      {
+        "hp": 305
+      }
+    ],
+    "immunities": ["fire", "paralyzed", "sleep"],
+    "weaknesses": [
+      {
+        "amount": 15,
+        "name": "cold"
+      }
+    ]
+  }
+}
