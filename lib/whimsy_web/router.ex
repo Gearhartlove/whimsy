@@ -27,12 +27,16 @@ defmodule WhimsyWeb.Router do
     post "/generate_encounter", AppController, :generate_encounter
   end
 
-  # HTMX routes - return HTML fragments
-  scope "/htmx", WhimsyWeb do
+  # Route for everything related to learning more about hypermedia
+  scope "/hypermedia", WhimsyWeb do
     pipe_through :browser
 
-    get "/greeting", HtmxController, :greeting
-    get "/roll", HtmxController, :roll_dice
+    get "/", HypermediaController, :index
+    get "/settings", HypermediaController, :settings
+    get "/contacts", HypermediaController, :contacts
+    get "/help", HypermediaController, :help
+    get "/docs", HypermediaController, :download_docs
+    delete "/contacts/#contact_id", HypermediaController, :delete_contact
   end
 
   # Other scopes may use custom stacks.

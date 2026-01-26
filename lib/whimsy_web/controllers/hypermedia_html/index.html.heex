@@ -1,0 +1,13 @@
+<h1 class="text-2xl mb-10">HYPERMEDIA HTMX LESSONS APPLICATION</h1>
+
+<a href="/hypermedia/contacts">Contacts</a>
+<a href="/hypermedia/settings">Settings</a>
+<a href="/hypermedia/help">Help</a>
+<a href="/hypermedia/documentation.pdf" hb-boost="false">
+  Download Docs
+</a>
+
+<!-- note: don't need a form here because the button carries the hypermedia action that it performs directly on itself -->
+<button hx-delete="/hypermedia/contacts/42">
+  Delete Contact
+</button>

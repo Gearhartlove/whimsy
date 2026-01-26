@@ -3,6 +3,7 @@ defmodule WhimsyWeb.AppController do
 
   @temperature 1.0
   @max_tokens 5000
+  @model "openai:gpt-4o-mini"
 
   def index(conn, _params) do
     conn
@@ -10,11 +11,9 @@ defmodule WhimsyWeb.AppController do
   end
 
   def generate_encounter(conn, %{"description" => description}) do
-    model = "openai:gpt-4o-mini"
-
     response =
       ReqLLM.generate_text!(
-        model,
+        @model,
         ~s(Please generate a succinct description of a dungion room matching the user's descirption:\n<user_description>\n#{description}\n</user_description>),
         temperature: @temperature,
         max_tokens: @max_tokens
@@ -24,5 +23,12 @@ defmodule WhimsyWeb.AppController do
     |> put_root_layout(false)
     |> put_layout(false)
     |> render(:encounter, response: response)
+  end
+
+  def settings(conn, params) do
+    conn
+    |> put_root_layout(false)
+    |> put_layout(false)
+    |> render(:settings)
   end
 end
