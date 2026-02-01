@@ -43,9 +43,11 @@ defmodule WhimsyWeb.Router do
     get "/", HypermediaController, :index
     get "/settings", HypermediaController, :settings
     get "/contacts", HypermediaController, :contacts
+    post "/contacts", HypermediaController, :search_contacts
     get "/help", HypermediaController, :help
     get "/docs", HypermediaController, :download_docs
     delete "/contacts/#contact_id", HypermediaController, :delete_contact
+    get "/experiments", HypermediaController, :experiments
   end
 
   # Other scopes may use custom stacks.

@@ -30,4 +30,12 @@ defmodule WhimsyWeb.HypermediaController do
     |> put_flash(:info, "Deleted Contact!")
     |> render(:delete_contact)
   end
+
+  def experiments(conn, params) do
+    render(conn, :experiments)
+  end
+
+  def search_contacts(conn, %{"q" => contact}) do
+    render(conn, :search_contacts, contact: contact)
+  end
 end
