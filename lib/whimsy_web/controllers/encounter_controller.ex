@@ -7,8 +7,8 @@ defmodule WhimsyWeb.EncounterController do
       path: "hx-get"
     },
     %{
-      display_name: "HX-POST",
-      path: "hx-post"
+      display_name: "WASD_DUNGEON",
+      path: "wasd_dungeon"
     }
   ]
 
@@ -24,6 +24,10 @@ defmodule WhimsyWeb.EncounterController do
     render(conn, :hx_post)
   end
 
+  def wasd_dungeon(conn, _params) do
+    render(conn, :wasd_dungeon, coord_x: 0, coord_y: 0)
+  end
+
   def fight(conn, _params) do
     case Enum.random(1..2) do
       1 ->
@@ -32,6 +36,25 @@ defmodule WhimsyWeb.EncounterController do
       2 ->
         render_fragment(conn, :victory)
     end
+  end
+
+  def move(conn, %{
+        "direction" => direction,
+        "coord_x" => coord_x,
+        "coord_y" => coord_y
+      }) do
+    coord_x = String.to_integer(coord_x)
+    coord_y = String.to_integer(coord_y)
+
+    {coord_x, coord_y} =
+      case direction do
+        "north" -> {coord_x, coord_y + 1}
+        "west" -> {coord_x - 1, coord_y}
+        "east" -> {coord_x + 1, coord_y}
+        "south" -> {coord_x, coord_y - 1}
+      end
+
+    render_fragment(conn, :coords, coord_x: coord_x, coord_y: coord_y)
   end
 
   def fragments(conn, %{"fragment" => fragment} = params) do
@@ -56,10 +79,10 @@ defmodule WhimsyWeb.EncounterController do
   @doc """
   Helper function to render fragment with conn
   """
-  def render_fragment(conn, fragment) do
+  def render_fragment(conn, fragment, opts \\ []) do
     conn
     |> put_root_layout(false)
     |> put_layout(false)
-    |> render(fragment)
+    |> render(fragment, opts)
   end
 end
