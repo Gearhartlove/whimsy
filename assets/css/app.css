@@ -103,3 +103,10 @@
 [data-phx-session], [data-phx-teleported-src] { display: contents }
 
 /* This file is for your main application CSS */
+
+/* Highlight WASD keys while htmx request is in flight */
+#wasd-dungeon .htmx-request {
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-content) !important;
+  scale: 1.1;
+}

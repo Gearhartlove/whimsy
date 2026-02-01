@@ -25,8 +25,11 @@ defmodule WhimsyWeb.Router do
 
     get "/", EncounterController, :index
     get "/hx-get", EncounterController, :hx_get
-    get "/hx-post", EncounterController, :hx_post
+    get "/wasd_dungeon", EncounterController, :wasd_dungeon
     get "/fragments/:fragment", EncounterController, :fragments
+    # Question: I don't know if I want the post looking like the GET
+    # but it feels wierder to change state with a GET, so ...
+    post "/fragments/:fragment", EncounterController, :fragments
   end
 
   scope "/app", WhimsyWeb do
