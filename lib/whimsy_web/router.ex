@@ -20,6 +20,15 @@ defmodule WhimsyWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/encounters", WhimsyWeb do
+    pipe_through :browser
+
+    get "/", EncounterController, :index
+    get "/hx-get", EncounterController, :hx_get
+    get "/hx-post", EncounterController, :hx_post
+    get "/fragments/:fragment", EncounterController, :fragments
+  end
+
   scope "/app", WhimsyWeb do
     pipe_through :browser
 
