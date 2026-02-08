@@ -20,25 +20,21 @@ defmodule WhimsyWeb.EncounterController do
     render(conn, :hx_get)
   end
 
-  def hx_post(conn, _params) do
-    render(conn, :hx_post)
-  end
-
   def wasd_dungeon(conn, _params) do
     render(conn, :wasd_dungeon, coord_x: 0, coord_y: 0)
   end
 
-  def fight(conn, _params) do
+  def _fight(conn, _params) do
     case Enum.random(1..2) do
       1 ->
-        render_fragment(conn, :death)
+        render_fragment(conn, :_death)
 
       2 ->
-        render_fragment(conn, :victory)
+        render_fragment(conn, :_victory)
     end
   end
 
-  def move(conn, %{
+  def _move(conn, %{
         "direction" => direction,
         "coord_x" => coord_x,
         "coord_y" => coord_y
@@ -54,7 +50,7 @@ defmodule WhimsyWeb.EncounterController do
         "south" -> {coord_x, coord_y - 1}
       end
 
-    render_fragment(conn, :coords, coord_x: coord_x, coord_y: coord_y)
+    render_fragment(conn, :_coords, coord_x: coord_x, coord_y: coord_y)
   end
 
   def fragments(conn, %{"fragment" => fragment} = params) do

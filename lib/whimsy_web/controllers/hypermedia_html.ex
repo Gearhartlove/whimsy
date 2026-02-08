@@ -62,7 +62,7 @@ defmodule WhimsyWeb.HypermediaHTML do
     """
   end
 
-  def search_contacts(assigns) do
+  def _search_contacts(assigns) do
     ~H"""
     <p>Searching for {assigns.contact}</p>
     """
