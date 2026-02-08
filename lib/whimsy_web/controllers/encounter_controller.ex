@@ -1,5 +1,6 @@
 defmodule WhimsyWeb.EncounterController do
   use WhimsyWeb, :controller
+  use WhimsyWeb.HtmlFragments, base_path: "/encounters"
 
   @encounters [
     %{
@@ -27,10 +28,10 @@ defmodule WhimsyWeb.EncounterController do
   def _fight(conn, _params) do
     case Enum.random(1..2) do
       1 ->
-        render_fragment(conn, :_death)
+        render(conn, :_death)
 
       2 ->
-        render_fragment(conn, :_victory)
+        render(conn, :_victory)
     end
   end
 
@@ -50,35 +51,6 @@ defmodule WhimsyWeb.EncounterController do
         "south" -> {coord_x, coord_y - 1}
       end
 
-    render_fragment(conn, :_coords, coord_x: coord_x, coord_y: coord_y)
-  end
-
-  def fragments(conn, %{"fragment" => fragment} = params) do
-    fragment = String.to_atom(fragment)
-
-    # if my module has a function named after the fragment, then go with that,
-    # otherwise just render the fragment straight up
-    if function_exported?(__MODULE__, fragment, 2) do
-      apply(__MODULE__, fragment, [conn, params])
-    else
-      render_fragment(conn, fragment)
-    end
-  end
-
-  @doc """
-  Helper function to reference encounter fragments
-  """
-  def f(name) do
-    "/encounters/fragments/#{name}"
-  end
-
-  @doc """
-  Helper function to render fragment with conn
-  """
-  def render_fragment(conn, fragment, opts \\ []) do
-    conn
-    |> put_root_layout(false)
-    |> put_layout(false)
-    |> render(fragment, opts)
+    render(conn, :_coords, coord_x: coord_x, coord_y: coord_y)
   end
 end

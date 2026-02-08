@@ -1,22 +1,22 @@
 # Whimsy
 
-AI Powered GM tools
+A different kind of website. Ideally one filled with dungeoneering and dragons! (powered by htmx and phoenix and elixir and postgres)
 
-## Goals
-Create an encounter creator to help Pathfinder `GMs` instantiate combat.
+# Architecture
+HTML fragments follow a naming convention like this 
+- in code: render(conn, :_success)
+  - In this example there is an underscore before the html template render
+- in template paths: _success.html.heex
+  - In this template path, there is an underscore before the name
 
-## Constraints
-- Only use _small_ subset of monsters
-- Support simple _small_ room layout with one layer
-- Use HTMX even when it does not make sense
-  - _note: point is to see the interaction and to use the beam WITH another technology_
-- ... There is maybe more to add here ...
+Note on the above convention: this creates nice and obvious visual clarity on how everything is set up. You can glance at a function, or a fragment and understand which is which. 
 
-## Early Days (log)
-Jan 25 
+There is an HtmxPlug which removes the root layout and layout if the request is an htmx request. This is done by looking at the headers of the request. 
 
-I know have a very simple page rendering using htmx at /app. I need to think more about the various components necessary to flesh this application out. 
+Any controller can support the use of fragments with a couple modifications like this 
+- in the *_controller.ex file
+  - add the line `use WhimsyWeb.HtmlFragments, base_path: "/encounters"`
+    - _note: the base_path is a required field to set_
+- in the *_html.ex file
+  - add the line `import WhimsyWeb.EncounterController, only: [f: 1]`
 
-Things like a _grid_ and pathfinder specific _tools_ and integrating with a set of monsters and such. 
-
-I would like to continue to use HTMX in order to add reactivity to the page every where that it makes sense!
