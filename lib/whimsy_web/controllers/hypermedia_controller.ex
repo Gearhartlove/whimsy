@@ -8,17 +8,17 @@ defmodule WhimsyWeb.HypermediaController do
 
   def settings(conn, params) do
     conn
-    |> render(:settings)
+    |> render(:_settings)
   end
 
   def help(conn, params) do
     conn
-    |> render(:help)
+    |> render(:_help)
   end
 
   def contacts(conn, params) do
     conn
-    |> render(:contacts)
+    |> render(:_contacts)
   end
 
   def delete_contact(conn, params) do
@@ -28,7 +28,7 @@ defmodule WhimsyWeb.HypermediaController do
     |> put_root_layout(false)
     |> put_layout(false)
     |> put_flash(:info, "Deleted Contact!")
-    |> render(:delete_contact)
+    |> render(:_delete_contact)
   end
 
   def experiments(conn, params) do
@@ -36,6 +36,6 @@ defmodule WhimsyWeb.HypermediaController do
   end
 
   def search_contacts(conn, %{"q" => contact}) do
-    render(conn, :search_contacts, contact: contact)
+    render(conn, :_search_contacts, contact: contact)
   end
 end
