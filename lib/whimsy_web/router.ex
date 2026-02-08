@@ -8,6 +8,7 @@ defmodule WhimsyWeb.Router do
     plug :put_root_layout, html: {WhimsyWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug WhimsyWeb.Plugs.HtmxPlug
   end
 
   pipeline :api do
@@ -49,7 +50,6 @@ defmodule WhimsyWeb.Router do
     post "/contacts", HypermediaController, :search_contacts
     get "/help", HypermediaController, :help
     get "/docs", HypermediaController, :download_docs
-    delete "/contacts/#contact_id", HypermediaController, :delete_contact
     get "/experiments", HypermediaController, :experiments
   end
 
