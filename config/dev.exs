@@ -2,7 +2,7 @@ import Config
 
 # Configure your database
 config :whimsy, Whimsy.Repo,
-  username: "postgres",
+  username: "kristoff",
   password: "postgres",
   hostname: "localhost",
   database: "whimsy_dev",
