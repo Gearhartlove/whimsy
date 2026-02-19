@@ -25,7 +25,7 @@ defmodule WhimsyWeb.AppController do
     |> render(:encounter, response: response)
   end
 
-  def settings(conn, params) do
+  def settings(conn, _params) do
     conn
     |> put_root_layout(false)
     |> put_layout(false)

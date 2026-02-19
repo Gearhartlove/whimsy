@@ -1,4 +1,5 @@
 defmodule Whimsy.Systems.Pdf2e.Die do
+  alias Whimsy.Systems.Pdf2e.Roll
   use Ecto.Schema
 
   import Ecto.Changeset

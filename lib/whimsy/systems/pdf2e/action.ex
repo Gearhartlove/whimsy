@@ -42,6 +42,7 @@ defmodule Whimsy.Systems.Pdf2e.Action do
         :action_type
       ]
     )
+    |> cast_assoc(:check, &Check.changeset/2)
     |> validate_inclusion(:action_cost, 0..3)
     |> validate_required([:name, :level, :effect, :action_cost, :action_type])
   end

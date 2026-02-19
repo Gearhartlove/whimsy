@@ -1,6 +1,5 @@
 defmodule Whimsy.Embedding do
   require IEx
-  alias Ecto.Repo
   alias Whimsy.Schemas.Creature
 
   import Ecto.Query
@@ -88,6 +87,6 @@ defmodule Whimsy.Embedding do
         %{embedded_phrase: embedded_phrase, embedding: embedding}
       )
 
-    {:ok, record} = Whimsy.Repo.insert(changeset)
+    {:ok, _record} = Whimsy.Repo.insert(changeset)
   end
 end
