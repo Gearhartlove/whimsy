@@ -29,20 +29,6 @@ defmodule WhimsyWeb.EncounterController do
     render(conn, :wasd_dungeon, coord_x: 0, coord_y: 0)
   end
 
-  def inventory(conn, _params) do
-    render(conn, items: Whimsy.Inventory.get())
-  end
-
-  # TODO: hook this up, note: can  probably make better crud patters to not have to define routes over and over again
-  def inventory_delete(conn, %{"item_name" => item_name}) do
-    Whimsy.Inventory.delete(item_name)
-
-    conn
-    |> put_status(303)
-    |> put_flash(:info, "Deleted Item")
-    |> redirect(to: "/encounters/inventory")
-  end
-
   def _fight(conn, _params) do
     case Enum.random(1..2) do
       1 ->

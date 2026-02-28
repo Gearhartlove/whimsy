@@ -36,6 +36,10 @@ defmodule Whimsy.Inventory do
     GenServer.call(__MODULE__, {:delete, item_name})
   end
 
+  def reset() do
+    GenServer.call(__MODULE__, :reset)
+  end
+
   @impl true
   def init(_) do
     {:ok, @starting_inventory}
@@ -68,5 +72,10 @@ defmodule Whimsy.Inventory do
       )
 
     {:reply, new_state, new_state}
+  end
+
+  def handle_call(:reset, _from, state) do
+    new_state = @starting_inventory
+    {:reply, :ok, new_state}
   end
 end
