@@ -9,6 +9,18 @@ defmodule Whimsy.Inventory do
     %{
       name: "Chair",
       price: 1
+    },
+    %{
+      name: "Book",
+      price: 100
+    },
+    %{
+      name: "Staff",
+      price: 200
+    },
+    %{
+      name: "Pupper",
+      price: 50
     }
   ]
 
@@ -18,6 +30,10 @@ defmodule Whimsy.Inventory do
 
   def get() do
     GenServer.call(__MODULE__, :get)
+  end
+
+  def delete(item_name) do
+    GenServer.call(__MODULE__, {:delete, item_name})
   end
 
   @impl true

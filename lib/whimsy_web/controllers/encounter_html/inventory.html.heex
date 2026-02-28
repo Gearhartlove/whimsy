@@ -1,0 +1,15 @@
+<h1 class="text-2xl">Inventory</h1>
+<ul class="list-disc ml-5">
+  <%= for %{name: item_name, price: price} <- @items do %>
+    <li>
+      <._item name={item_name} price={price} />
+      <button
+        class="btn btn-error"
+        hx-delete={"/encounters/inventory/#{item_name}"}
+        hx-target="main"
+      >
+        delete
+      </button>
+    </li>
+  <% end %>
+</ul>

@@ -27,6 +27,8 @@ defmodule WhimsyWeb.Router do
     get "/", EncounterController, :index
     get "/hx-get", EncounterController, :hx_get
     get "/wasd_dungeon", EncounterController, :wasd_dungeon
+    get "/inventory", EncounterController, :inventory
+    delete "/inventory/:item_name", EncounterController, :inventory_delete
     get "/fragments/:fragment", EncounterController, :fragments
     # Question: I don't know if I want the post looking like the GET
     # but it feels wierder to change state with a GET, so ...
