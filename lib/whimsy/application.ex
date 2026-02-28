@@ -15,7 +15,8 @@ defmodule Whimsy.Application do
       # Start a worker by calling: Whimsy.Worker.start_link(arg)
       # {Whimsy.Worker, arg},
       # Start to serve requests, typically the last entry
-      WhimsyWeb.Endpoint
+      WhimsyWeb.Endpoint,
+      Whimsy.Inventory
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
