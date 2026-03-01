@@ -1,9 +1,37 @@
-<header class="navbar px-4 sm:px-6 lg:px-8">
-  <div class="flex-1"></div>
+<header class="navbar flex-col px-4 sm:px-6 lg:px-8">
   <a href="/" style="font-family: 'Pacifico', cursive;" class="text-4xl text-primary mt-3">
     WHIMSY
   </a>
-  <div class="flex-1"></div>
+  <nav class="mt-6">
+    <%= if @current_scope do %>
+      <div class="flex flex-col items-center gap-1">
+        <.avatar email={@current_scope.user.email} size={64} alt={@current_scope.user.name} />
+        <span class="text-sm font-semibold">{@current_scope.user.name}</span>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-xs opacity-70">
+            <.icon name="hero-chevron-down" class="size-4" /> Menu
+          </div>
+          <ul tabindex="0" class="dropdown-content menu bg-base-200 rounded-box z-10 w-44 p-2 shadow">
+            <li>
+              <.link href={~p"/users/settings"}>
+                <.icon name="hero-cog-6-tooth" class="size-4" /> Settings
+              </.link>
+            </li>
+            <li>
+              <.link href={~p"/users/log-out"} method="delete" hx-boost="false">
+                <.icon name="hero-arrow-right-start-on-rectangle" class="size-4" /> Log out
+              </.link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex items-center gap-4 text-sm opacity-70">
+        <.link href={~p"/users/register"}>Register</.link>
+        <.link href={~p"/users/log-in"}>Log in</.link>
+      </div>
+    <% end %>
+  </nav>
 </header>
 
 <main class="px-4 py-20 sm:px-6 lg:px-8">

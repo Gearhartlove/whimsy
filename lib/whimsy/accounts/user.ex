@@ -3,6 +3,7 @@ defmodule Whimsy.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
+    field :name, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -10,6 +11,16 @@ defmodule Whimsy.Accounts.User do
     field :authenticated_at, :utc_datetime, virtual: true
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc """
+  A user changeset for changing the character name.
+  """
+  def name_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name])
+    |> validate_required([:name])
+    |> validate_length(:name, max: 40)
   end
 
   @doc """
@@ -26,6 +37,20 @@ defmodule Whimsy.Accounts.User do
   def email_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:email])
+    |> validate_email(opts)
+  end
+
+  @doc """
+  A user changeset for registration.
+
+  Casts email and name, validates both, and delegates email validation
+  to `validate_email/2`.
+  """
+  def registration_changeset(user, attrs, opts \\ []) do
+    user
+    |> cast(attrs, [:email, :name])
+    |> validate_required([:name])
+    |> validate_length(:name, max: 40)
     |> validate_email(opts)
   end
 

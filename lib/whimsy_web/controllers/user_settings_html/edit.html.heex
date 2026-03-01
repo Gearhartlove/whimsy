@@ -6,6 +6,16 @@
     </.header>
   </div>
 
+  <.form :let={f} for={@name_changeset} action={~p"/users/settings"} id="update_name">
+    <input type="hidden" name="action" value="update_name" />
+
+    <.input field={f[:name]} type="text" label="Character Name" autocomplete="name" required />
+
+    <.button variant="primary" phx-disable-with="Changing...">Change Name</.button>
+  </.form>
+
+  <div class="divider" />
+
   <.form :let={f} for={@email_changeset} action={~p"/users/settings"} id="update_email">
     <input type="hidden" name="action" value="update_email" />
 
