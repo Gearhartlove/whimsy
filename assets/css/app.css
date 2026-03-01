@@ -104,6 +104,11 @@
 
 /* This file is for your main application CSS */
 
+/* Recessed panel effect for HUD cells */
+.hud-cell {
+  box-shadow: inset 0 1px 4px oklch(0% 0 0 / 0.25);
+}
+
 /* Highlight WASD keys while htmx request is in flight */
 #wasd-dungeon .htmx-request {
   background-color: var(--color-primary) !important;

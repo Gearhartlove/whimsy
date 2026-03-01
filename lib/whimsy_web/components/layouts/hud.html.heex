@@ -1,0 +1,46 @@
+<div class="h-screen w-screen bg-base-300 p-[3px]">
+  <div class="grid h-full w-full grid-rows-[auto_1fr_minmax(140px,0.35fr)] grid-cols-[minmax(140px,0.22fr)_1fr_minmax(140px,0.22fr)] gap-[3px]">
+    <%!-- Row 1: thin top bar --%>
+    <div id="hud-admin" class="hud-cell bg-base-200 flex items-center justify-center p-2">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">Admin</span>
+    </div>
+
+    <div id="hud-title" class="hud-cell bg-base-200 flex items-center justify-center p-2">
+      <a href="/" style="font-family: 'Pacifico', cursive;" class="text-2xl text-primary">
+        WHIMSY
+      </a>
+    </div>
+
+    <div id="hud-toast" class="hud-cell bg-base-200 flex items-center justify-center p-2">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">Toast</span>
+    </div>
+
+    <%!-- Row 2: main content row --%>
+    <div id="hud-dialog" class="hud-cell bg-base-200 flex items-center justify-center p-3">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">Dialog</span>
+    </div>
+
+    <div id="hud-main" class="hud-cell bg-base-100 overflow-auto">
+      {@inner_content}
+    </div>
+
+    <div id="hud-npcs" class="hud-cell bg-base-200 flex items-center justify-center p-3">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">NPCs</span>
+    </div>
+
+    <%!-- Row 3: bottom panels --%>
+    <div id="hud-player" class="hud-cell bg-base-200 flex items-center justify-center p-3">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">Player</span>
+    </div>
+
+    <div id="hud-stats" class="hud-cell bg-base-200 flex items-center justify-center p-3">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">Stats</span>
+    </div>
+
+    <div id="hud-npc-portrait" class="hud-cell bg-base-200 flex items-center justify-center p-3">
+      <span class="text-xs text-base-content/40 uppercase tracking-wider">NPC</span>
+    </div>
+  </div>
+</div>
+
+<.flash_group flash={@flash} />

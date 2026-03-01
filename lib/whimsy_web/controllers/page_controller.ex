@@ -10,6 +10,8 @@ defmodule WhimsyWeb.PageController do
   ]
 
   def home(conn, _params) do
-    render(conn, :home, destinations: @destinations)
+    conn
+    |> put_layout(html: {WhimsyWeb.Layouts, :hud})
+    |> render(:home, destinations: @destinations)
   end
 end
