@@ -5,7 +5,7 @@
   <nav class="mt-6">
     <%= if @current_scope do %>
       <div class="flex flex-col items-center gap-1">
-        <.avatar email={@current_scope.user.email} size={64} alt={@current_scope.user.name} />
+        <.avatar email={@current_scope.user.email} avatar_path={@current_scope.user.avatar_path} size={64} alt={@current_scope.user.name} />
         <span class="text-sm font-semibold">{@current_scope.user.name}</span>
         <div class="dropdown dropdown-end">
           <div tabindex="0" role="button" class="btn btn-ghost btn-xs opacity-70">
@@ -39,5 +39,9 @@
     {@inner_content}
   </div>
 </main>
+
+<footer class="py-8 text-center text-xs text-base-content/30">
+  <a href="/attribution" class="hover:text-base-content/50 transition-colors">Attribution</a>
+</footer>
 
 <.flash_group flash={@flash} />

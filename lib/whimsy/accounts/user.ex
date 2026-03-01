@@ -7,10 +7,35 @@ defmodule Whimsy.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
+    field :avatar_path, :string
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc """
+  A user changeset for changing the avatar path.
+  """
+  def avatar_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:avatar_path])
+    |> validate_avatar_path()
+  end
+
+  defp validate_avatar_path(changeset) do
+    case get_field(changeset, :avatar_path) do
+      nil ->
+        changeset
+
+      path ->
+        if String.starts_with?(path, "/images/avatars/") or
+             String.starts_with?(path, "/uploads/avatars/") do
+          changeset
+        else
+          add_error(changeset, :avatar_path, "must be a valid avatar path")
+        end
+    end
   end
 
   @doc """

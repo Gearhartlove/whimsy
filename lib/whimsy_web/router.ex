@@ -22,6 +22,7 @@ defmodule WhimsyWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/attribution", AttributionController, :index
   end
 
   scope "/encounters", WhimsyWeb do

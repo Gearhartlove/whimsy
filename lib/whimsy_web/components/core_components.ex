@@ -429,24 +429,32 @@ defmodule WhimsyWeb.CoreComponents do
       <.avatar email="user@example.com" size={64} class="ring ring-primary" />
   """
   attr :email, :string, required: true
+  attr :avatar_path, :string, default: nil
   attr :size, :integer, default: 80
   attr :alt, :string, default: ""
   attr :class, :any, default: nil
 
   def avatar(assigns) do
-    hash =
-      :crypto.hash(:md5, String.downcase(String.trim(assigns.email)))
-      |> Base.encode16(case: :lower)
+    src =
+      if assigns.avatar_path do
+        assigns.avatar_path
+      else
+        hash =
+          :crypto.hash(:md5, String.downcase(String.trim(assigns.email)))
+          |> Base.encode16(case: :lower)
 
-    assigns = assign(assigns, :hash, hash)
+        "https://www.gravatar.com/avatar/#{hash}?s=#{assigns.size}&d=identicon"
+      end
+
+    assigns = assign(assigns, :src, src)
 
     ~H"""
     <img
-      src={"https://www.gravatar.com/avatar/#{@hash}?s=#{@size}&d=identicon"}
+      src={@src}
       alt={@alt}
       width={@size}
       height={@size}
-      class={["rounded-full", @class]}
+      class={["rounded-full", @avatar_path && "[image-rendering:pixelated]", @class]}
     />
     """
   end

@@ -111,6 +111,24 @@ defmodule Whimsy.Accounts do
     |> Repo.update()
   end
 
+  ## Avatar
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for changing the user avatar.
+  """
+  def change_user_avatar(user, attrs \\ %{}) do
+    User.avatar_changeset(user, attrs)
+  end
+
+  @doc """
+  Updates the user avatar.
+  """
+  def update_user_avatar(user, attrs) do
+    user
+    |> User.avatar_changeset(attrs)
+    |> Repo.update()
+  end
+
   ## Settings
 
   @doc """
