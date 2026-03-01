@@ -17,35 +17,44 @@
   themes: false;
 }
 
-/* daisyUI theme plugin. You can update this file by fetching the latest version with:
-  curl -sLO https://github.com/saadeghi/daisyui/releases/latest/download/daisyui-theme.js
-  We ship with two themes, a light one inspired on Phoenix colors and a dark one inspired
-  on Elixir colors. Build your own at: https://daisyui.com/theme-generator/ */
+/* daisyUI theme plugin — Lux2K palette by lux (https://lospec.com/palette-list/lux2k)
+  Build your own at: https://daisyui.com/theme-generator/
+  Update the theme plugin with:
+  curl -sLO https://github.com/saadeghi/daisyui/releases/latest/download/daisyui-theme.js */
 @plugin "../vendor/daisyui-theme" {
   name: "dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
-  --color-base-100: oklch(30.33% 0.016 252.42);
-  --color-base-200: oklch(25.26% 0.014 253.1);
-  --color-base-300: oklch(20.15% 0.012 254.09);
-  --color-base-content: oklch(97.807% 0.029 256.847);
-  --color-primary: oklch(78% 0.22 148);
-  --color-primary-content: oklch(15% 0.05 148);
-  --color-secondary: oklch(58% 0.233 277.117);
-  --color-secondary-content: oklch(96% 0.018 272.314);
-  --color-accent: oklch(60% 0.25 292.717);
-  --color-accent-content: oklch(96% 0.016 293.756);
-  --color-neutral: oklch(37% 0.044 257.287);
-  --color-neutral-content: oklch(98% 0.003 247.858);
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(97% 0.013 236.62);
-  --color-success: oklch(60% 0.118 184.704);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
+  /* warm_mauve / dark_plum / darkest_plum */
+  --color-base-100: oklch(37.97% 0.0333 4.36);
+  --color-base-200: oklch(30.37% 0.0508 329.68);
+  --color-base-300: oklch(21.47% 0.0318 355.23);
+  --color-base-content: oklch(90.16% 0.0281 88.76);
+  /* emerald */
+  --color-primary: oklch(53.85% 0.1190 141.71);
+  --color-primary-content: oklch(90.16% 0.0281 88.76);
+  /* violet */
+  --color-secondary: oklch(55.79% 0.2567 285.60);
+  --color-secondary-content: oklch(90.91% 0.0360 231.13);
+  /* gold */
+  --color-accent: oklch(88.84% 0.1344 88.18);
+  --color-accent-content: oklch(21.47% 0.0318 355.23);
+  /* sage */
+  --color-neutral: oklch(50.81% 0.0412 133.86);
+  --color-neutral-content: oklch(90.16% 0.0281 88.76);
+  /* cornflower */
+  --color-info: oklch(60.52% 0.1246 262.26);
+  --color-info-content: oklch(90.91% 0.0360 231.13);
+  /* olive_lime */
+  --color-success: oklch(67.31% 0.1368 126.66);
+  --color-success-content: oklch(21.47% 0.0318 355.23);
+  /* amber */
+  --color-warning: oklch(68.06% 0.1412 67.49);
+  --color-warning-content: oklch(21.47% 0.0318 355.23);
+  /* crimson */
+  --color-error: oklch(55.26% 0.2098 16.08);
+  --color-error-content: oklch(90.16% 0.0281 88.76);
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.5rem;
@@ -61,26 +70,35 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(98% 0 0);
-  --color-base-200: oklch(96% 0.001 286.375);
-  --color-base-300: oklch(92% 0.004 286.32);
-  --color-base-content: oklch(21% 0.006 285.885);
-  --color-primary: oklch(70% 0.213 47.604);
-  --color-primary-content: oklch(98% 0.016 73.684);
-  --color-secondary: oklch(55% 0.027 264.364);
-  --color-secondary-content: oklch(98% 0.002 247.839);
-  --color-accent: oklch(0% 0 0);
+  /* white / cream / blush */
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(90.16% 0.0281 88.76);
+  --color-base-300: oklch(82.12% 0.0431 32.63);
+  --color-base-content: oklch(21.47% 0.0318 355.23);
+  /* forest_green */
+  --color-primary: oklch(42.41% 0.0762 152.05);
+  --color-primary-content: oklch(90.16% 0.0281 88.76);
+  /* indigo */
+  --color-secondary: oklch(41.13% 0.1632 280.74);
+  --color-secondary-content: oklch(100% 0 0);
+  /* burgundy */
+  --color-accent: oklch(42.53% 0.1278 353.38);
   --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(44% 0.017 285.786);
-  --color-neutral-content: oklch(98% 0 0);
-  --color-info: oklch(62% 0.214 259.815);
-  --color-info-content: oklch(97% 0.014 254.604);
-  --color-success: oklch(70% 0.14 182.503);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
+  /* warm_mauve */
+  --color-neutral: oklch(37.97% 0.0333 4.36);
+  --color-neutral-content: oklch(90.16% 0.0281 88.76);
+  /* cornflower */
+  --color-info: oklch(60.52% 0.1246 262.26);
+  --color-info-content: oklch(100% 0 0);
+  /* emerald */
+  --color-success: oklch(53.85% 0.1190 141.71);
+  --color-success-content: oklch(100% 0 0);
+  /* amber */
+  --color-warning: oklch(68.06% 0.1412 67.49);
+  --color-warning-content: oklch(21.47% 0.0318 355.23);
+  /* crimson */
+  --color-error: oklch(55.26% 0.2098 16.08);
+  --color-error-content: oklch(100% 0 0);
   --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.5rem;
