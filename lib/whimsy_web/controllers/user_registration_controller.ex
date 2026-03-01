@@ -9,6 +9,15 @@ defmodule WhimsyWeb.UserRegistrationController do
     render(conn, :new, changeset: changeset)
   end
 
+  def validate(conn, %{"user" => user_params}) do
+    changeset =
+      %User{}
+      |> Accounts.change_user_registration(user_params)
+      |> Map.put(:action, :validate)
+
+    render(conn, :new, changeset: changeset)
+  end
+
   def create(conn, %{"user" => user_params}) do
     case Accounts.register_user(user_params) do
       {:ok, user} ->
