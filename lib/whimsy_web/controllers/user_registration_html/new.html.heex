@@ -3,9 +3,10 @@
   hx-post={~p"/users/register/validate"}
   hx-trigger="input delay:500ms"
   hx-target="this"
-  hx-swap="outerHTML focus-scroll:false"
+  hx-swap="morph:outerHTML"
   hx-include="find form"
   hx-boost="false"
+  hx-ext="morph"
 >
   <div class="mx-auto max-w-sm">
     <div class="text-center">
