@@ -1,28 +1,28 @@
 defmodule WhimsyWeb.HypermediaController do
   use WhimsyWeb, :controller
 
-  def index(conn, params) do
+  def index(conn, _params) do
     conn
     |> render(:index)
   end
 
-  def settings(conn, params) do
+  def settings(conn, _params) do
     conn
     |> render(:_settings)
   end
 
-  def help(conn, params) do
+  def help(conn, _params) do
     conn
     |> render(:_help)
   end
 
-  def contacts(conn, params) do
+  def contacts(conn, _params) do
     conn
     |> render(:_contacts)
   end
 
-  def delete_contact(conn, params) do
-    contact = %{id: 1, name: "Kristoff"}
+  def delete_contact(conn, _params) do
+    _contact = %{id: 1, name: "Kristoff"}
 
     conn
     |> put_root_layout(false)
@@ -31,7 +31,7 @@ defmodule WhimsyWeb.HypermediaController do
     |> render(:_delete_contact)
   end
 
-  def experiments(conn, params) do
+  def experiments(conn, _params) do
     render(conn, :experiments)
   end
 

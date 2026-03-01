@@ -419,6 +419,47 @@ defmodule WhimsyWeb.CoreComponents do
   end
 
   @doc """
+  Renders a Gravatar avatar image.
+
+  Uses the user's email to generate a Gravatar URL with an identicon fallback.
+
+  ## Examples
+
+      <.avatar email="user@example.com" />
+      <.avatar email="user@example.com" size={64} class="ring ring-primary" />
+  """
+  attr :email, :string, required: true
+  attr :avatar_path, :string, default: nil
+  attr :size, :integer, default: 80
+  attr :alt, :string, default: ""
+  attr :class, :any, default: nil
+
+  def avatar(assigns) do
+    src =
+      if assigns.avatar_path do
+        assigns.avatar_path
+      else
+        hash =
+          :crypto.hash(:md5, String.downcase(String.trim(assigns.email)))
+          |> Base.encode16(case: :lower)
+
+        "https://www.gravatar.com/avatar/#{hash}?s=#{assigns.size}&d=identicon"
+      end
+
+    assigns = assign(assigns, :src, src)
+
+    ~H"""
+    <img
+      src={@src}
+      alt={@alt}
+      width={@size}
+      height={@size}
+      class={["rounded-full", @avatar_path && "[image-rendering:pixelated]", @class]}
+    />
+    """
+  end
+
+  @doc """
   Renders a [Heroicon](https://heroicons.com).
 
   Heroicons come in three styles – outline, solid, and mini.

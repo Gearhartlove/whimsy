@@ -7,7 +7,10 @@ defmodule WhimsyWeb.Plugs.HtmxPlug do
   end
 
   def call(conn, _opts) do
-    if get_req_header(conn, "hx-request") == ["true"] do
+    is_htmx = get_req_header(conn, "hx-request") == ["true"]
+    is_boosted = get_req_header(conn, "hx-boosted") == ["true"]
+
+    if is_htmx and not is_boosted do
       conn
       |> put_root_layout(false)
       |> put_layout(false)

@@ -1,9 +1,25 @@
 defmodule Whimsy.Systems.Pdf2e.Check do
-  @moduledoc """
-  Usually made by rolling a single 20-sided dice (a d20) and adding a number based on the relevant attribute. Rolling high is generally a better outcome.
+  alias Whimsy.Systems.Pdf2e.Roll
+  alias Whimsy.Systems.Pdf2e.Action
+  use Ecto.Schema
 
-  Each check has a DC or 'Difficulty Check'.
-  If the result is equal to or greater than the DC, the check is successful. If it's less, it's a failure.
-  A PC can a achieve a 'critical success' or 'critical failure' by roaling 10 higher or 10 lower, respectively.
-  """
+  import Ecto.Changeset
+
+  schema "checks" do
+    field :dc, :integer
+    field :outcome, Ecto.Enum, values: [:critical_success, :success, :failure, :critical_failure]
+    field :check_type, :string
+
+    has_one :roll, Roll
+    belongs_to :action, Action
+
+    timestamps()
+  end
+
+  def changeset(check, params \\ %{}) do
+    check
+    |> cast(params, [:action_id, :dc, :outcome, :check_type])
+    |> cast_assoc(:roll, with: &Roll.changeset/2, required: true)
+    |> validate_required([:dc, :check_type])
+  end
 end

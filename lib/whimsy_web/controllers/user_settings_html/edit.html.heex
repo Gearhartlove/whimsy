@@ -1,0 +1,123 @@
+<div>
+  <div class="text-center">
+    <.header>
+      Account Settings
+      <:subtitle>Manage your account email address and password settings</:subtitle>
+    </.header>
+  </div>
+
+  <div class="flex flex-col items-center gap-4 mb-4">
+    <.avatar
+      email={@current_scope.user.email}
+      avatar_path={@current_scope.user.avatar_path}
+      size={96}
+      alt="Current avatar"
+    />
+    <span class="text-sm text-base-content/70">Current Avatar</span>
+  </div>
+
+  <.form
+    for={@avatar_changeset}
+    action={~p"/users/settings"}
+    id="update_avatar"
+    method="put"
+    multipart
+  >
+    <input type="hidden" name="action" value="update_avatar" />
+
+    <% presets = WhimsyWeb.UserSettingsHTML.avatar_presets() %>
+    <%= if presets != [] do %>
+      <label class="label mb-1">Choose a preset avatar</label>
+      <div class="grid grid-cols-4 sm:grid-cols-6 gap-3 mb-4">
+        <%= for preset <- presets do %>
+          <label class="cursor-pointer">
+            <input
+              type="radio"
+              name="avatar_preset"
+              value={preset}
+              class="hidden peer"
+            />
+            <img
+              src={preset}
+              alt="preset avatar"
+              class="w-16 h-16 rounded-full [image-rendering:pixelated] border-2 border-transparent peer-checked:border-primary peer-checked:ring-2 peer-checked:ring-primary/50 hover:border-base-content/30 transition-all"
+            />
+          </label>
+        <% end %>
+      </div>
+
+      <div class="divider text-xs text-base-content/50">OR</div>
+    <% end %>
+
+    <div class="mb-4">
+      <label class="label mb-1">Upload a custom avatar</label>
+      <input
+        type="file"
+        name="avatar_upload"
+        accept="image/jpeg,image/png,image/gif,image/webp"
+        class="file-input file-input-bordered w-full"
+      />
+      <p class="text-xs text-base-content/50 mt-1">Max 2MB. JPG, PNG, GIF, or WebP.</p>
+    </div>
+
+    <.button variant="primary" phx-disable-with="Saving...">Save Avatar</.button>
+  </.form>
+
+  <%= if @current_scope.user.avatar_path do %>
+    <.form for={%{}} action={~p"/users/settings"} id="remove_avatar" method="put" class="mt-2">
+      <input type="hidden" name="action" value="update_avatar" />
+      <input type="hidden" name="remove_avatar" value="true" />
+      <button
+        type="submit"
+        class="text-sm text-error hover:underline cursor-pointer"
+        data-confirm="Remove your custom avatar?"
+      >
+        Remove avatar
+      </button>
+    </.form>
+  <% end %>
+
+  <div class="divider" />
+
+  <.form :let={f} for={@name_changeset} action={~p"/users/settings"} id="update_name">
+    <input type="hidden" name="action" value="update_name" />
+
+    <.input field={f[:name]} type="text" label="Character Name" autocomplete="name" required />
+
+    <.button variant="primary" phx-disable-with="Changing...">Change Name</.button>
+  </.form>
+
+  <div class="divider" />
+
+  <.form :let={f} for={@email_changeset} action={~p"/users/settings"} id="update_email">
+    <input type="hidden" name="action" value="update_email" />
+
+    <.input field={f[:email]} type="email" label="Email" autocomplete="email" required />
+
+    <.button variant="primary" phx-disable-with="Changing...">Change Email</.button>
+  </.form>
+
+  <div class="divider" />
+
+  <.form :let={f} for={@password_changeset} action={~p"/users/settings"} id="update_password">
+    <input type="hidden" name="action" value="update_password" />
+
+    <.input
+      field={f[:password]}
+      type="password"
+      label="New password"
+      autocomplete="new-password"
+      required
+    />
+    <.input
+      field={f[:password_confirmation]}
+      type="password"
+      label="Confirm new password"
+      autocomplete="new-password"
+      required
+    />
+    <.button variant="primary" phx-disable-with="Changing...">
+      Save Password
+    </.button>
+  </.form>
+</div>

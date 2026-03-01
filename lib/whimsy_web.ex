@@ -17,7 +17,7 @@ defmodule WhimsyWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+  def static_paths, do: ~w(assets fonts images uploads favicon.ico robots.txt)
 
   def router do
     quote do
@@ -38,7 +38,9 @@ defmodule WhimsyWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, formats: [:html, :json]
+      use Phoenix.Controller,
+        formats: [:html, :json],
+        layouts: [html: {WhimsyWeb.Layouts, :app}]
 
       use Gettext, backend: WhimsyWeb.Gettext
 
@@ -86,6 +88,7 @@ defmodule WhimsyWeb do
       import Phoenix.HTML
       # Core UI components
       import WhimsyWeb.CoreComponents
+      import WhimsyWeb.NavigationComponents
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS

@@ -10,6 +10,10 @@ defmodule WhimsyWeb.EncounterController do
     %{
       display_name: "WASD_DUNGEON",
       path: "wasd_dungeon"
+    },
+    %{
+      display_name: "INVENTORY",
+      path: "inventory"
     }
   ]
 

@@ -7,5 +7,4 @@ defmodule Whimsy.Systems.Pdf2e.Engine do
   2. PC will be asked to attempt a `Check`
   3. Compare `Check` against `Difficulty Class (DC)`
   """
-  alias Bandit.HTTP2.FlowControl
 end

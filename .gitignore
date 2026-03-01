@@ -31,6 +31,10 @@ whimsy-*.tar
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
 
+# Ignore uploaded avatars (keep the .gitkeep)
+/priv/static/uploads/avatars/*
+!/priv/static/uploads/avatars/.gitkeep
+
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
 /assets/node_modules/
@@ -38,4 +42,6 @@ npm-debug.log
 /ralph/RALPH_AGENTS.md
 /ralph/progress.txt
 
+docs/.obsidian
 
+.playwright-mcp/
