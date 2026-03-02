@@ -25,6 +25,7 @@ import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/whimsy"
 import topbar from "../vendor/topbar"
 import htmx from "../vendor/htmx.min.js"
+import "../vendor/idiomorph-ext.min.js"
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 

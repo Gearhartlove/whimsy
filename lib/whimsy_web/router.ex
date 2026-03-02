@@ -90,6 +90,7 @@ defmodule WhimsyWeb.Router do
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
+    post "/users/register/validate", UserRegistrationController, :validate
   end
 
   scope "/", WhimsyWeb do
