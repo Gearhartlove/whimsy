@@ -45,3 +45,6 @@ npm-debug.log
 docs/.obsidian
 
 .playwright-mcp/
+
+
+.claude/
