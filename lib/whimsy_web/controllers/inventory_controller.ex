@@ -2,7 +2,9 @@ defmodule WhimsyWeb.InventoryController do
   use WhimsyWeb, :controller
 
   def index(conn, _params) do
-    render(conn, items: Whimsy.Inventory.get())
+    conn
+    |> put_layout(false)
+    |> render(items: Whimsy.Inventory.get())
   end
 
   def delete(conn, %{"id" => id}) do

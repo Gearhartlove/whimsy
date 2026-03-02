@@ -18,15 +18,21 @@ defmodule WhimsyWeb.EncounterController do
   ]
 
   def index(conn, _params) do
-    render(conn, :index, encounters: @encounters)
+    conn
+    |> put_layout(false)
+    |> render(:index, encounters: @encounters)
   end
 
   def hx_get(conn, _params) do
-    render(conn, :hx_get)
+    conn
+    |> put_layout(false)
+    |> render(:hx_get)
   end
 
   def wasd_dungeon(conn, _params) do
-    render(conn, :wasd_dungeon, coord_x: 0, coord_y: 0)
+    conn
+    |> put_layout(false)
+    |> render(:wasd_dungeon, coord_x: 0, coord_y: 0)
   end
 
   def _fight(conn, _params) do

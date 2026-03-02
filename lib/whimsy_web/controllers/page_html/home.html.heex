@@ -1,11 +1,9 @@
 <div class="flex flex-col items-center justify-center h-full">
-  <p class="text-base-content/30 text-xs tracking-[0.4em] uppercase mb-14">
-    — where will you venture? —
-  </p>
-
   <div class="flex flex-wrap justify-center gap-10">
     <%= for %{href: href, title: title, description: description} <- @destinations do %>
-      <.destination_card href={href} title={title} description={description} />
+      <div>
+        <a href={href} hx-target="#hud-main">{title} - {description}</a>
+      </div>
     <% end %>
   </div>
 </div>

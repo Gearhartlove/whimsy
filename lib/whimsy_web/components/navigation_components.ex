@@ -4,6 +4,8 @@ defmodule WhimsyWeb.NavigationComponents do
   @doc """
   Renders a quest-style destination card linking to a section of the app.
 
+  TODO: Decide if I want to keep this or not
+
   ## Examples
 
       <.destination_card href="/encounters" title="Encounters" description="seek your destiny" />

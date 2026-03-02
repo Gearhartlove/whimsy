@@ -31,8 +31,10 @@
   --color-base-200: oklch(30.37% 0.0508 329.68);
   --color-base-300: oklch(21.47% 0.0318 355.23);
   --color-base-content: oklch(90.16% 0.0281 88.76);
+  /* --color-base-content: oklch(100% 0 0); */
   /* emerald */
-  --color-primary: oklch(53.85% 0.1190 141.71);
+  /* --color-primary: oklch(53.85% 0.1190 141.71); */
+  --color-primary: oklch(76.68% 0.1678 127.12);
   --color-primary-content: oklch(90.16% 0.0281 88.76);
   /* violet */
   --color-secondary: oklch(55.79% 0.2567 285.60);
