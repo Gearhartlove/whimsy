@@ -1,0 +1,85 @@
+<h2>How should we structure project management in Obsidian?</h2>
+<p class="subtitle">Three approaches with different trade-offs on simplicity, power, and maintainability</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Bases-First (Recommended)</h3>
+      <p><strong>Each issue is a note. Bases provide the views.</strong></p>
+      <p>Issues are plain Markdown files with frontmatter properties (status, priority, project, due date, parent). Obsidian Bases (`.base` files) query these notes and display them as tables, grouped by status or project. No community plugins needed.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Built entirely on core Obsidian features (Bases, properties, wikilinks)</li>
+            <li>Each issue is a full note &mdash; rich descriptions, links to docs vaults, sub-tasks via wikilinks</li>
+            <li>Bases give you table/list/card views with filters, grouping, and formulas out of the box</li>
+            <li>Easy to extend &mdash; add a new property and it just works</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>No true kanban board view (Bases doesn't have a board/column layout)</li>
+            <li>Many files over time &mdash; need good folder structure and archive strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Kanban Plugin + Properties</h3>
+      <p><strong>Issues are notes. A Kanban plugin provides the board view.</strong></p>
+      <p>Same note-per-issue structure, but add the community Kanban plugin for drag-and-drop board views. Properties still drive metadata. You get visual boards AND Bases table views.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>True kanban board with drag-and-drop between columns</li>
+            <li>Visual, tactile workflow that feels closest to Linear</li>
+            <li>Can combine with Bases for table views too</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Depends on community plugin (maintenance risk)</li>
+            <li>Kanban plugin stores board state in its own format &mdash; can drift from properties</li>
+            <li>Two sources of truth for status (board position vs. frontmatter)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Flat Task Lists in Project Notes</h3>
+      <p><strong>Each project is one note. Tasks are checkbox items inside it.</strong></p>
+      <p>Instead of one-note-per-issue, keep tasks as checkbox list items within a project note. Use the Tasks plugin or Bases task queries to aggregate across projects.</p>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>Pros</h4>
+          <ul>
+            <li>Simplest to set up &mdash; fewer files, less structure</li>
+            <li>Everything about a project in one place</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>Cons</h4>
+          <ul>
+            <li>Tasks can't have rich descriptions, sub-tasks, or their own metadata easily</li>
+            <li>Doesn't scale &mdash; project notes become unwieldy with 50+ tasks</li>
+            <li>Loses the "issue as a document" model that makes Linear powerful</li>
+            <li>Hard to link from other vaults to specific tasks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
