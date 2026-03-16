@@ -434,6 +434,7 @@ defmodule WhimsyWeb.CoreComponents do
   attr :alt, :string, default: ""
   attr :class, :any, default: nil
 
+  # KGF: THOUGHT: default avatar?
   def avatar(assigns) do
     src =
       if assigns.avatar_path do

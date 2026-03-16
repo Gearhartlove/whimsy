@@ -30,7 +30,15 @@
 
     <%!-- Row 3: bottom panels --%>
     <div id="hud-player" class="hud-cell bg-base-300 flex items-center justify-center p-3">
-      <span class="text-xs text-base-content uppercase tracking-wider">Player</span>
+      <div class="flex flex-col items-center gap-4 mb-4">
+        <.avatar
+          email={@current_scope.user.email}
+          avatar_path={@current_scope.user.avatar_path}
+          size={256}
+          alt="Current avatar"
+        />
+        <span class="text-sm text-base-content/70">{@current_scope.user.name}</span>
+      </div>
     </div>
 
     <div id="hud-stats" class="hud-cell bg-base-300 flex items-center justify-center p-3">
